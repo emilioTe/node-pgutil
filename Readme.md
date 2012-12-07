@@ -1,5 +1,5 @@
 # pgutil.js
-A couple of helper methods to use with [node-postgres](https://github.com/brianc/node_postgres).
+A couple of helper methods to use with [node-postgres](https://github.com/brianc/node-postgres).
 
 ## Dependencies
     npm install pg
@@ -8,7 +8,7 @@ A couple of helper methods to use with [node-postgres](https://github.com/brianc
     git clone https://github.com/emilioTe/node-pgutil.git
 
 ## Quickstart
-pgutil.js exposes a couple of helper methods for using JS objects with [pg](https://github.com/brianc/node_postgres) queries. This is a **very** simple implementation, but one that has worked for me. So far.
+pgutil.js exposes a couple of helper methods for using JS objects with [pg](https://github.com/brianc/node-postgres) queries. This is a **very** simple implementation, but one that has worked for me. So far.
 
     var pg = require('pg')
       , pgutil = require('./pgutil')
