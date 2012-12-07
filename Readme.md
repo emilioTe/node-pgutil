@@ -62,6 +62,9 @@ pgutil.js exposes a couple of helper methods for using JS objects with [pg](http
 ### hash
 `pgutil.hash(string [, salt [, hash]]`: Each parameter is of type String.
 
+## Caveat
+`pgutil.*Parse.fields` is **NOT** character escaped so ensure that your object keys are safe!
+
 ## License
 Copyright (C) 2012 Emilio Testa
 
