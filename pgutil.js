@@ -2,7 +2,7 @@
 
 var crypto = require('crypto');
 
-exports.insertParse = function(obj) {
+exports.insert = function(obj) {
   var keys = Object.keys(obj)
     , values = []
     , numerals = []   // This will hold the placeholders. I.e. `$1,$2,$3`
@@ -19,7 +19,8 @@ exports.insertParse = function(obj) {
 };
 
 
-exports.updateParse = function(obj) {
+
+exports.update = function(obj) {
   var keys = Object.keys(obj)
     , values = []
     , numerals = []

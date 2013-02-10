@@ -18,7 +18,7 @@ pgutil.js exposes a couple of helper methods for using JS objects with [pg](http
 
       if (err) throw err;
 
-      var prepped = pgutil.insertParse({ email: 'yums@tasty.com', password: 'apassword' });
+      var prepped = pgutil.insert({ email: 'yums@tasty.com', password: 'apassword' });
 
       client.query(
         "INSERT INTO users (" + prepped.fields + ") VALUES (" + prepped.params + ")",
@@ -35,12 +35,12 @@ pgutil.js exposes a couple of helper methods for using JS objects with [pg](http
     });
 
 ## Methods
-* insertParse
-* updateParse
+* insert
+* update
 * hash
 
-### insertParse
-    var prepped = pgutil.insertParse({ email: 'yums@tasty.com', password: 'apassword' });
+### insert
+    var prepped = pgutil.insert({ email: 'yums@tasty.com', password: 'apassword' });
 
     client.query(
       "INSERT INTO users (" + prepped.fields + ") VALUES (" + prepped.params + ")",
@@ -49,8 +49,8 @@ pgutil.js exposes a couple of helper methods for using JS objects with [pg](http
       prepped.values,
       // ['yums@tasty.com', 'apassword']
 
-### updateParse
-    var prepped = pgutil.updateParse({ password: 'newpassword', lastactive: new Date() });
+### update
+    var prepped = pgutil.update({ password: 'newpassword', lastactive: new Date() });
 
     client.query(
       "UPDATE users SET " + prepped.fields,
@@ -63,7 +63,7 @@ pgutil.js exposes a couple of helper methods for using JS objects with [pg](http
 Each parameter is of type String.
 
 ## Caveat
-`pgutil.*Parse.fields` is **NOT** character escaped so ensure that your object keys are safe!
+`pgutil.(insert/update).fields` is **NOT** character escaped so ensure that your object keys are safe!
 
 ## License
 Copyright (C) 2012 Emilio Testa
