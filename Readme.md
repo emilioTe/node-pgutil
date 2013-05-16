@@ -1,46 +1,56 @@
-# pgutil.js
-A couple of helper methods to use with [node-postgres](https://github.com/brianc/node-postgres).
+# pg-objects
 
-## Dependencies
+
+
+### Dependencies
     npm install pg
 
-## Installation
-    git clone https://github.com/emilioTe/node-pgutil.git
+
+
+### Installation
+    npm install pg-objects
+
+
 
 ## Quickstart
-pgutil.js exposes a couple of helper methods for using JS objects with [pg](https://github.com/brianc/node-postgres) queries. This is a **very** simple implementation, but one that has worked for me. So far.
+`pg-objects` exposes a couple of helper methods for using JS objects with [pg](https://github.com/brianc/node-postgres) queries. This is a **very** simple implementation, but one that has worked for me. So far.
 
-    var pg = require('pg')
-      , pgutil = require('./pgutil')
-      ;
 
-    pg.connect(connectionString, function(err, client) {
+```javascript
+var pg = require('pg')
+  , pgobj = require('pg-objects')
+  ;
 
-      if (err) throw err;
+pg.connect(connectionString, function(err, client) {
 
-      var prepped = pgutil.insert({ email: 'yums@tasty.com', password: 'apassword' });
+  if (err) throw err;
 
-      client.query(
-        "INSERT INTO users (" + prepped.fields + ") VALUES (" + prepped.params + ")",
-        // "INSERT INTO users (email, password) VALUES ($1, $2)"
+  var prepped = pgobj.insert({ email: 'yums@tasty.com', password: 'apassword' });
 
-        prepped.values,
-        // ['yums@tasty.com', 'apassword']
+  client.query(
+    "INSERT INTO users (" + prepped.fields + ") VALUES (" + prepped.params + ")",
+    // "INSERT INTO users (email, password) VALUES ($1, $2)"
 
-        function(err, result) {
-          // Your logic.
-        }
-      );
+    prepped.values,
+    // ['yums@tasty.com', 'apassword']
 
-    });
+    function(err, result) {
+      // Your logic.
+    }
+  );
+
+});
+```
+
 
 ## Methods
 * insert
 * update
 * hash
 
+
 ### insert
-    var prepped = pgutil.insert({ email: 'yums@tasty.com', password: 'apassword' });
+    var prepped = pgobj.insert({ email: 'yums@tasty.com', password: 'apassword' });
 
     client.query(
       "INSERT INTO users (" + prepped.fields + ") VALUES (" + prepped.params + ")",
@@ -49,8 +59,9 @@ pgutil.js exposes a couple of helper methods for using JS objects with [pg](http
       prepped.values,
       // ['yums@tasty.com', 'apassword']
 
+
 ### update
-    var prepped = pgutil.update({ password: 'newpassword', lastactive: new Date() });
+    var prepped = pgobj.update({ password: 'newpassword', lastactive: new Date() });
 
     client.query(
       "UPDATE users SET " + prepped.fields,
@@ -59,11 +70,16 @@ pgutil.js exposes a couple of helper methods for using JS objects with [pg](http
       prepped.values,
       // ['newpassword', *a Date value*]
 
+
 ### hash(string [, salt [, hash]])
 Each parameter is of type String.
 
+
+
 ## Caveat
-`pgutil.(insert/update).fields` is **NOT** character escaped so ensure that your object keys are safe!
+`pgobj.(insert/update).fields` is **NOT** character escaped so ensure that your object keys are safe!
+
+
 
 ## License
 Copyright (C) 2012 Emilio Testa
