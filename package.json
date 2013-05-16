@@ -1,0 +1,21 @@
+{
+  "name": "pg-objects",
+  "version": "0.0.2",
+  "description": "Exposes a couple of helper methods for using JS objects with pg queries.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emilioTe/pg-objects.git"
+  },
+  "keywords": [
+    "postgres",
+    "postgresql",
+    "pg",
+    "objects",
+    "utility"
+  ],
+  "author": "Emilio Testa",
+  "license": "MIT",
+  "readmeFilename": "Readme.md",
+  "gitHead": "44c928a9fec5f2b2dffb1bd96e69603f5318ad5f"
+}
